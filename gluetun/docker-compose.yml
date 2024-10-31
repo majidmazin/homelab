@@ -1,0 +1,16 @@
+services:
+  gluetun:
+    image: qmcgaw/gluetun
+    container_name: gluetun
+    cap_add:
+      - NET_ADMIN
+    environment:
+      - TZ=America/Chicago
+      - VPN_SERVICE_PROVIDER=custom
+      - VPN_TYPE=wireguard
+    ports:
+      - 8112:8112 # Deluge Web UI
+    volumes:
+      - /etc/localtime:/etc/localtime:ro
+      - ./78F29_fr_wg.conf:/gluetun/wireguard/wg0.conf
+    restart: unless-stopped

@@ -1,0 +1,24 @@
+services:
+  jellyfin:
+    image: jellyfin/jellyfin
+    container_name: jellyfin
+    environment:
+      - TZ=America/Chicago
+    ports:
+      - '8096:8096/tcp'
+    security_opt: # enables full access to /sys and /proc, still far better than privileged: true
+      - systempaths=unconfined
+      - apparmor=unconfined
+    group_add:
+      - 44 # video group
+    devices:
+      - '/dev/dri:/dev/dri'
+      - '/dev/dma_heap:/dev/dma_heap'
+      - '/dev/mali0:/dev/mali0'
+      - '/dev/rga:/dev/rga'
+      - '/dev/mpp_service:/dev/mpp_service'
+    volumes:
+      - './config:/config'
+      - './cache:/cache'
+      - '/media:/media'
+    restart: unless-stopped

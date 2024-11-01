@@ -1,2 +1,2 @@
 # homelab
-A collection of configuration files for my Orange Pi 5 Plus
+A collection of configuration files for my homelab

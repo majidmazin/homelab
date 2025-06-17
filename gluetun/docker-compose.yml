@@ -12,5 +12,5 @@ services:
       - 8112:8112 # Deluge Web UI
     volumes:
       - /etc/localtime:/etc/localtime:ro
-      - ./78F29_fr_wg.conf:/gluetun/wireguard/wg0.conf
+      - ./2666A_ca-tr_wg.conf:/gluetun/wireguard/wg0.conf
     restart: unless-stopped

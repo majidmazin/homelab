@@ -9,7 +9,8 @@ services:
       - VPN_SERVICE_PROVIDER=custom
       - VPN_TYPE=wireguard
     ports:
-      - 8112:8112 # Deluge Web UI
+      - 9091:9091   # Transmission Web UI
+      - 51413:51413 # Transmission Daemon
     volumes:
       - /etc/localtime:/etc/localtime:ro
       - ./2666A_ca-tr_wg.conf:/gluetun/wireguard/wg0.conf

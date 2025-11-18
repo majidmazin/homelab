@@ -10,9 +10,11 @@ services:
     volumes:
       - ./config:/config
       - /home/ubuntu/Downloading:/downloads
+      - ../gluetun_tmp/forwarded_port:/pia/forwarded_port
     # ports:
     #   - 8112:8112
     #   - 6881:6881
     #   - 6881:6881/udp
     network_mode: "container:gluetun"
     restart: unless-stopped
+    

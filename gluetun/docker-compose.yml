@@ -6,12 +6,17 @@ services:
       - NET_ADMIN
     environment:
       - TZ=America/Chicago
-      - VPN_SERVICE_PROVIDER=custom
-      - VPN_TYPE=wireguard
+      - VPN_PORT_FORWARDING=on
+      - VPN_SERVICE_PROVIDER=private internet access
+      - OPENVPN_USER=[set]
+      - OPENVPN_PASSWORD=[set]
+      - PORT_FORWARD_ONLY=true
+      - SERVER_REGIONS=CA Toronto
     ports:
-      - 9091:9091   # Transmission Web UI
-      - 51413:51413 # Transmission Daemon
+      - 8112:8112     # Deluge Web UI
+      - 6881:6881     # Deluge Daemon (TCP, default)
+      - 6881:6881/udp # Deluge Daemon (UDP)
     volumes:
       - /etc/localtime:/etc/localtime:ro
-      - ./2666A_ca-tr_wg.conf:/gluetun/wireguard/wg0.conf
+      - ./gluetun_tmp:/tmp/gluetun
     restart: unless-stopped
